@@ -1,7 +1,10 @@
-uint32_t sensor[8];  //Array for Sensor Values
+uint16_t sensor[8];  //Array for Sensor Values
 uint32_t sumValues = 0;  //Sum of the Sensor Values
-uint32_t color = 0;  //Will be used as a Color flag for black or white lines. Not Implemented
+uint8_t color = 0;  //Will be used as a Color flag for black or white lines. Not Implemented
 uint32_t valueOut = 0;  //Output value for Analog Output
+
+// Storage for the vex communications data
+
 void setup()
 {
 Serial.begin(9600);  //Initialize the Serial Output
@@ -21,21 +24,45 @@ sensor[4] = analogRead(A4);
 sensor[5] = analogRead(A5);
 sensor[6] = analogRead(A6);
 sensor[7] = analogRead(A7);
- 
-valueOut = 0;  //Initialize the variables to calculate the weighted average
-sumValues = 0;
+
+//INVERTED SENSORS flipped from x,y y,x
+for(int i = 0; i < 8; i++) {
+sensor[i] = map(constrain(sensor[i],40, 750), 40, 750, 255, 0);      // input, output. CRUDE calibration mechanism. 
+} 
+
+//clearing the values
+valueOut = 0;  
+sumValues = 0; 
+
+
+//telling me where the location it is at
 for(int i = 0; i < 8; i++) //Loop through each of the Sensors
-{
-valueOut += sensor[i]*128*(i);  //Weight the Sensor Values
-sumValues += sensor[i];         //Calculate the Sum of the Sensor Values
-}
-if(sumValues <= 400)  //This is the cut to throw away data if no line is detected.
-{
-valueOut = 0;
-}
-valueOut /= sumValues;  //Calculate the weighted average
-//Serial.println(valueOut);  //For debugging
-OCR2B = (valueOut/4)%256;    //Generate the Analog Output on Pin 3
-delayMicroseconds(100);      //Wait a bit so things can settle
+{ 
+ valueOut += sensor[i]*36*(i);  //Weight the Sensor Values *
+ sumValues += sensor[i];         //Calculate the Sum of the Sensor Values
+ // valueOut -= 400;
 }
 
+//if all of them dont see a line then we throw it away
+/*
+if(sumValues <= 80)  //This is the cut to throw away data if no line is detected.
+{
+	valueOut = 0;
+}*/
+
+valueOut /= sumValues;  //Calculate the weighted average
+valueOut = constrain(valueOut, 0,255);
+Serial.println(valueOut);  //For debugging
+
+/*for(int i=0; i<8; i++)
+{
+  Serial.print(sensor[i]);
+  Serial.print('\t');
+}
+Serial.print('\n');
+*/
+
+OCR2B = valueOut;
+delayMicroseconds(100); //100     //Wait a bit so things can settle
+
+}
