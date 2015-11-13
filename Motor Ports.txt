@@ -1,19 +1,16 @@
 Motor Ports		Motor Name			Encoder			Notes
-
 1													Do Not Use, 2 Wire Port
-2				
-3				
-4				*driveFrontLeft		FastMotor
-5				driveFrontRight		FastMotor
-6				driveRearLeft		FastMotor
-7				*driveRearRight		FastMotor
-8				
+2			magazine/feed						
+3			*shooterLeft			I2C_1
+4			*driveFrontLeft			I2C_2	FastMotor
+5			driveFrontRight			I2C_5	FastMotor
+6			driveRearLeft			I2C_3	FastMotor
+7			*driveRearRight			I2C_4	FastMotor
+8			*shooterRight			I2C_6
 9				
 10													Do Not Use, 2 Wire Port
 
 *2 y-cables - Note lynne, bottoms are reversed. 
 
-*shooterLeft		
-magazine
-intake					
-*shooterRight					
+
+
