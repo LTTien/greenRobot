@@ -1,0 +1,19 @@
+Motor Ports		Motor Name			Encoder			Notes
+
+1													Do Not Use, 2 Wire Port
+2				
+3				
+4				*driveFrontLeft		FastMotor
+5				driveFrontRight		FastMotor
+6				driveRearLeft		FastMotor
+7				*driveRearRight		FastMotor
+8				
+9				
+10													Do Not Use, 2 Wire Port
+
+*2 y-cables - Note lynne, bottoms are reversed. 
+
+*shooterLeft		
+magazine
+intake					
+*shooterRight					
