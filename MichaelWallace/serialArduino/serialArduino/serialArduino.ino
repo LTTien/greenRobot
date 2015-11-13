@@ -48,14 +48,13 @@ typedef struct _vdata {
       unsigned char  header_55;
       unsigned char  message_type;
       unsigned char  datalen;
-      long var_1;
-      unsigned short var_2;
-      unsigned short var_3;
-      unsigned short var_4;
-      unsigned short var_5;
-      unsigned short var_6;
-      unsigned short var_7;
-      unsigned short var_8;
+      int angle;
+      int stick_1x;   // right stick 
+      int stick_2y;   // right stick
+      int stick_3y;   // left stick 
+      int stick_4x;   // left stick 
+      int button_567; // 
+      int button_8etc;  // 
       unsigned char  id;
       unsigned char  checksum;
       } vdata;
@@ -139,9 +138,13 @@ void loop()
     timer =  millis();
         
     // dummy data - the real variables would be set here
-    MyVexDataTx.data.var_1 = myGyro.getXDegrees();
-    MyVexDataTx.data.var_2 = 13;
-
+    MyVexDataTx.data.angle = myGyro.getXDegrees();
+    MyVexDataTx.data.stick_1x = myGyro.getXDegrees();
+    MyVexDataTx.data.stick_2y = 90;
+    MyVexDataTx.data.stick_3y = 270;
+    MyVexDataTx.data.stick_4x = 180;
+    MyVexDataTx.data.button_567 = 4;
+    MyVexDataTx.data.button_8etc = 13;    
     // next id
     MyVexDataTx.data.id++;
     

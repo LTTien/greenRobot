@@ -44,16 +44,16 @@ typedef struct _vdata {
       unsigned char  header_55;
       unsigned char  message_type;
       unsigned char  datalen;
-      long var_1;
-      unsigned short var_2;
-      unsigned short var_3;
-      unsigned short var_4;
-      unsigned short var_5;
-      unsigned short var_6;
-      unsigned short var_7;
-      unsigned short var_8;
+      int angle;
+      int stick_1x;			//8 bits for -127 to 128
+      int stick_2y;
+      int stick_3y;
+      int stick_4x;
+      int button_567;
+      int button_8etc;
       unsigned char  id;
       unsigned char  checksum;
+
       } vdata;
 
 #define  VEXDATAOFFSET         4
@@ -138,14 +138,13 @@ void
 serialRxDecode( vexdata  *v  )
 {
    // Move the data to output variables
-    vars[0] = v->data.var_1;
-    vars[1] = v->data.var_2;
-    vars[2] = v->data.var_3;
-    vars[3] = v->data.var_4;
-    vars[4] = v->data.var_5;
-    vars[5] = v->data.var_6;
-    vars[6] = v->data.var_7;
-    vars[7] = v->data.var_8;
+    vars[0] = v->data.angle;
+    vars[1] = v->data.stick_1x;
+    vars[2] = v->data.stick_2y;
+    vars[3] = v->data.stick_3y;
+    vars[4] = v->data.stick_4x;
+    vars[5] = v->data.button_567;
+    vars[6] = v->data.button_8etc;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -153,21 +152,21 @@ serialRxDecode( vexdata  *v  )
 /*-----------------------------------------------------------------------------*/
 
 void
-serialTimeoutStart( long *t )
+serialTimeoutStart( int *t )
 {
     // Start timeout
     *t = nSysTime;
 }
 
 void
-serialTimeoutStop( long *t )
+serialTimeoutStop( int *t )
 {
     // Stop timeout
     *t = 0;
 }
 
 int
-serialTimeoutCheck( long *t )
+serialTimeoutCheck( int *t )
 {
     // Is timeout running
     if( *t > 0 )
@@ -208,12 +207,11 @@ typedef enum {
     kRxStateChecksum
     } rxState;
 
-void
-serialRx( vexdata  *v )
+void serialRx( vexdata  *v )
 {
     static  rxState  serialRxState  = kRxStateIdle;
     static  int      serialDataReceived = 0;
-    static  long     timeout            = 0;
+    static  int     timeout            = 0;
 
     int    c;
 
