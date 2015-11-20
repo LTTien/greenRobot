@@ -1,0 +1,46 @@
+void autoShooterStartSoft(int speed){		// BELOW THE SHOOTERSTARTSOFT
+	int minSpeed = 20;
+	int step = 2;
+	int currentSpeed = minSpeed;
+	while (currentSpeed < speed){
+		currentSpeed += step;
+		motor[shooterLeft] = currentSpeed;
+		motor[shooterRight] = currentSpeed;
+		wait1Msec(10);
+	}
+	motor[shooterLeft] = speed;
+	motor[shooterRight] = speed;
+}
+
+task autonomous()	{		// void autonomous()
+	// StartTask(serialRxTask);	//gyroSensor
+
+	int autoShooterSpeedGoal = 100;
+	autoShooterStartSoft(autoShooterSpeedGoal);
+	
+	ClearTimer(T1);	// Clear Timer	
+	while (time1[T1] < 5)	{		//GO FORWARD for 5 SECONDS????
+		goForward(100);
+	}
+
+	while (true) {		// LINE SENSOR CODE
+		motor[intake] = 100;	
+		
+		if (SensorValue(lineSensor) < 1500) {           	 // 128 to 255 is left side
+			turnCounterClockwise(40);
+		}
+		else if (SensorValue(lineSensor) <= 1500 && SensorValue(lineSensor) >= 1750)	{
+			goForward(40);
+		}
+		else if (SensorValue(lineSensor) < 1750) {           // 0 to 127 is the right side.
+			turnClockwise(40);
+		}
+		else    {   // BREAK
+			motor[driveFrontRight] = 0;
+			motor[driveRearRight] = 0;
+			motor[driveFrontLeft] = 0;
+			motor[driveRearLeft] = 0;
+		}   // end Line Sensor statement
+
+	}   // end  while(true)
+}

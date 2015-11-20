@@ -44,13 +44,15 @@ typedef struct _vdata {
       unsigned char  header_55;
       unsigned char  message_type;
       unsigned char  datalen;
-      int angle;
+      long angle;
+      /*
       int stick_1x;			//8 bits for -127 to 128
       int stick_2y;
       int stick_3y;
       int stick_4x;
       int button_567;
       int button_8etc;
+      */
       unsigned char  id;
       unsigned char  checksum;
 
@@ -139,12 +141,12 @@ serialRxDecode( vexdata  *v  )
 {
    // Move the data to output variables
     vars[0] = v->data.angle;
-    vars[1] = v->data.stick_1x;
-    vars[2] = v->data.stick_2y;
-    vars[3] = v->data.stick_3y;
-    vars[4] = v->data.stick_4x;
-    vars[5] = v->data.button_567;
-    vars[6] = v->data.button_8etc;
+    //vars[1] = v->data.stick_1x;
+    //vars[2] = v->data.stick_2y;
+    //vars[3] = v->data.stick_3y;
+    //vars[4] = v->data.stick_4x;
+    //vars[5] = v->data.button_567;
+    //vars[6] = v->data.button_8etc;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -223,7 +225,7 @@ void serialRx( vexdata  *v )
         }
 
     // check for a received character
-    while( (c = serialRxChar()) >= 0 )
+    while( (c == serialRxChar()) >= 0 )
         {
         // A new character has been received so process it.
 

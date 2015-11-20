@@ -7,10 +7,11 @@ Motor Ports		Motor Name			Encoder			Notes
 6			driveRearLeft			I2C_3	FastMotor
 7			*driveRearRight			I2C_4	FastMotor
 8			*shooterRight			I2C_6
-9				
+9			intake
 10													Do Not Use, 2 Wire Port
 
 *2 y-cables - Note lynne, bottoms are reversed. 
 
 
 
+@SAM - GREASE THE GEAR TRAINS?

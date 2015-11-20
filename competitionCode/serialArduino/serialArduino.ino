@@ -48,13 +48,13 @@ typedef struct _vdata {
       unsigned char  header_55;
       unsigned char  message_type;
       unsigned char  datalen;
-      int angle;
-      int stick_1x;   // right stick 
-      int stick_2y;   // right stick
-      int stick_3y;   // left stick 
-      int stick_4x;   // left stick 
-      int button_567; // 
-      int button_8etc;  // 
+      long angle;
+//      int stick_1x;   // right stick 
+//      int stick_2y;   // right stick
+//      int stick_3y;   // left stick 
+//      int stick_4x;   // left stick 
+//      int button_567; // 
+//      int button_8etc;  // 
       unsigned char  id;
       unsigned char  checksum;
       } vdata;
@@ -139,12 +139,12 @@ void loop()
         
     // dummy data - the real variables would be set here
     MyVexDataTx.data.angle = myGyro.getXDegrees();
-    MyVexDataTx.data.stick_1x = myGyro.getXDegrees();
-    MyVexDataTx.data.stick_2y = 90;
-    MyVexDataTx.data.stick_3y = 270;
-    MyVexDataTx.data.stick_4x = 180;
-    MyVexDataTx.data.button_567 = 4;
-    MyVexDataTx.data.button_8etc = 13;    
+//    MyVexDataTx.data.stick_1x = myGyro.getXDegrees();
+//    MyVexDataTx.data.stick_2y = 90;
+//    MyVexDataTx.data.stick_3y = 270;
+//    MyVexDataTx.data.stick_4x = 180;
+//    MyVexDataTx.data.button_567 = 4;
+//    MyVexDataTx.data.button_8etc = 13;    
     // next id
     MyVexDataTx.data.id++;
     
