@@ -1,0 +1,57 @@
+Lidar. 
+realize in the box.
+where u are in the box. 
+
+cons:
+a lot of programing. 
+Bumpers. with sonar
+
+
+sonar is good 3-4 ft. 
+Trigger pin/echo pin - SONAR. 
+
+
+
+1. Gyro.
+2. line.
+3. Sonar.
+
+* 4 motor ramp up no y cables. 
+
+
+- 78% attendance
+- 22% documentation 
+	edmodo - vex team
+
+
+post on the team. 
+score of our own robots.
+reasonable shape. lots of work. evolution not revolution.
+last thing - dec 12. jan. feb. 2 hosted on march(need to ask clubs to join us)
+
+
+control values
+motor values
+auduino - dui (arm processor 32 bit) - 
+motors CANNOT go on the arudino. 
+
+
+
+COACH AT OBSERVING POINTS. 
+
+
+NEED TO GIVE 3-D PRINTED DIMENSIONS TO KIM/VINTAI/BLOSSOM WITH AN IDEA FOR IT(BLUPRINT)
+3-d deployable. 
+
+
+gyro sensor case
+line sensor case
+
+
+X get a time frame of when i can get into the botcave.
+	holding the room door
+	keys to the room. - Vintai okay with giving me a scheudle. chris school schedule: MO WE 7:30AM - 11:10AM, tuth 7:30 - 11:30 AM, 12PM - 3:10PM 	
+
+
+3PM ANGLE FOR THE PURPLE ROBOT TO BUILD RAMP.
+friday - robots need to be done and need to be scrimmaged.

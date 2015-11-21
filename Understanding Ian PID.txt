@@ -1,0 +1,26 @@
+Known Variables:
+	
+int derivative = 5;			// how fast the error increases/decreases
+int leftVelocity = 80;			// initial speeds
+int shooterLeftSpeed = 80;
+int proportion = 5;
+
+Unknown Variables:
+
+int velocity (int adjSpeed)	{		
+int leftEncoderError;
+int leftEncoderErrorOld;
+int leftEncoderDerivativeError;
+int leftEncoderSpeedOld;
+int targetSpeed = adjSpeed / 6;
+
+
+leftEncoderSpeed = -SensorValue[leftShooterEncoder];
+leftEncoderError = targetSpeed - (leftEncoderSpeed - leftEncoderSpeedOld);
+leftEncoderDerivativeError = leftEncoderError - leftEncoderErrorOld;
+leftEncoderErrorOld = leftEncoderError;
+leftVelocity = leftVelocity + proportion*leftEncoderError / 20 - derivative*leftEncoderDerivativeError / 4;
+leftEncoderSpeedOld = leftEncoderSpeed;
+return leftVelocity;
+	
+}		//END PID 
